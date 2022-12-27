@@ -1,4 +1,5 @@
 package day06_;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Assert;
@@ -14,10 +15,12 @@ import java.time.Duration;
 import java.util.List;
 
 public class C01_Dropdown {
-    //Eger test classinda birden fazla method olusturulmussa @Before kullanilir.
+
     WebDriver driver;
+
+    //Eger test classinda birden fazla method olusturulmussa, @Before kullanilir.
     @Before
-    public void setup(){
+    public void setup() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -26,14 +29,14 @@ public class C01_Dropdown {
     }
 
     @Test
-    public void selectByIndexTest(){
+    public void selectByIndexTest() {
 
         //1. LOCATE dropdown element
         WebElement year = driver.findElement(By.xpath("//select[@id='year']"));
         //2.SELECT objesi olustur
-        Select select = new Select(year);
+        Select yearDropdown = new Select(year);
         //3.SELECT objecti kullanarak 3 farkli sekilde secim yapabilirim
-        select.selectByIndex(22); //SECENEK SIRASI 0'DAN BASLAR. 2000 YILI 23.SIRADA
+        yearDropdown.selectByIndex(22); //SECENEK SIRASI 0'DAN BASLAR. 2000 YILI 23.SIRADA
 
 
         //Dogum yilini , ayini, ve gununu su sekilde secer : 2000, January, 10
@@ -52,7 +55,7 @@ public class C01_Dropdown {
     }
 
     @Test
-    public void printAllTest(){
+    public void printAllTest() {
 
 
         //Tum eyalet isimlerini konsola yazdiralim
@@ -68,7 +71,7 @@ public class C01_Dropdown {
     }
 
     @Test
-    public void getSelectedOptionTest(){
+    public void getSelectedOptionTest() {
 
         //State dropdownindaki varsayilan secili secenegin Select a State oldugunu verify edelim
 
@@ -76,12 +79,13 @@ public class C01_Dropdown {
         WebElement state = driver.findElement(By.xpath("//select[@id='state']"));
         Select stateDropdown = new Select(state);
         String defaultText = stateDropdown.getFirstSelectedOption().getText();
-        Assert.assertEquals("Select a State",defaultText);
+        Assert.assertEquals("Select a State", defaultText);
     }
+
     @After
     public void tearDown() throws InterruptedException {
         Thread.sleep(3);
-        driver.close();
+       // driver.close();
     }
 
 
