@@ -30,7 +30,7 @@ public class C02_DropdownReusable {
         //selectFromDropdown(driver.findElement(By.xpath("//select[@id='month']")), "January"); -> month January
         //selectFromDropdown(driver.findElement(By.id("day")), "12"); -> Day 12
 
-        //Gonderilen dropdown elemention tum optionslari alinir
+        //Gonderilen dropdown elemention tum optionlari alinir
         List<WebElement> options = dropdown.findElements(By.tagName("option"));//Tum option tagli elementleri aliyorum
         for (WebElement eachOption : options) {
             if (eachOption.getText().equals(secenek)) {

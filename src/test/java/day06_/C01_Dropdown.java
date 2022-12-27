@@ -85,7 +85,7 @@ public class C01_Dropdown {
     @After
     public void tearDown() throws InterruptedException {
         Thread.sleep(3);
-       // driver.close();
+        driver.close();
     }
 
 
