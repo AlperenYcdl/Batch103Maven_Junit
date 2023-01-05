@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import utilities.TestBase;
+
 public class C04_PromptAlert extends TestBase {
     @Test
     public void sendKeysMethod() throws InterruptedException {
@@ -14,7 +15,7 @@ public class C04_PromptAlert extends TestBase {
         Thread.sleep(5000);
 
 //    uyarıdaki metin kutusuna isminizi yazin,
-        driver.switchTo().alert().sendKeys("Selmina");
+        driver.switchTo().alert().sendKeys("Ayda");
         Thread.sleep(5000);
 
 //    OK butonuna tıklayın
@@ -22,8 +23,8 @@ public class C04_PromptAlert extends TestBase {
         Thread.sleep(5000);
 
 //    ve result mesajında isminizin görüntülendiğini doğrulayın.
-        String actualResult = driver.findElement(By.id("result")).getText();//You entered: Selmina
-        String expectedResult = "Selmina";
+        String actualResult = driver.findElement(By.id("result")).getText();//You entered: Ayda
+        String expectedResult = "Ayda";
         Assert.assertTrue(actualResult.contains(expectedResult));
         Thread.sleep(5000);
     }
