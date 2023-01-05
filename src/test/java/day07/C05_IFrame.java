@@ -8,19 +8,24 @@ import utilities.TestBase;
 public class C05_IFrame extends TestBase{
 
     @Test
-    public void iframeTest(){
+    public void iframeTest() throws InterruptedException {
         driver.get("https://testcenter.techproeducation.com/index.php?page=iframe");
+//        Thread.sleep(6000);
 
-//        Ana sayfadaki ‘An iframe with a thin black border:’ metninde ‘black border’ yazisinin oldugunu test edelim
+     //2- Ana sayfadaki ‘An iframe with a thin black border:’ metninde ‘black border’ yazisinin oldugunu test edelim
         String anaMetin = driver.findElement(By.xpath("//p[.='An iframe with a thin black border:']")).getText();
-
-//        //tag[.='metin']; Bana bu tagli metni ver
-        //tag[text()='metin'];
         String expectedText="black border";
         Assert.assertTrue(anaMetin.contains(expectedText));
 
-//        Ayrica ‘Applications lists’ yazisinin sayfada oldugunu test edelim
-        //Applications lists elementi iframe in icinde. Iframe switch yapmam sart
+        //Veya böyle de alinabilir ;
+        //tag[.='metin']; Bana bu tagli metni ver demek
+        //tag[text()='metin'];
+
+
+    //3- Ayrica ‘Applications lists’ yazisinin sayfada oldugunu test edelim
+
+
+    //Applications lists elementi iframe inicinde. Iframe switch yapmam sart.
         driver.switchTo().frame(0);//index 0 dan baslar. ilk iframe e switch yapiyoruz
         String icMetin = driver.findElement(By.xpath("//*[.='Applications lists']")).getText();
         String expectedText1="Applications lists";
@@ -30,9 +35,10 @@ public class C05_IFrame extends TestBase{
 //        Assert.assertTrue(expectedText1.contains(icMetin));
 //        Assert.assertTrue(driver.findElement(By.xpath("//*[.='Applications lists']")).isDisplayed());
 
-//        Son olarak footer daki ‘Povered By’ yazisini varligini test edilip
-//        Ana sayfadaki Povered By yazinisi test etmek istiyorum Ama driver hala iframein icinde
-//        Iframein disina cikmak icin driver.switchTo().defaultContent/parentFrame
+
+    //4- Son olarak footer daki ‘Povered By’ yazisini varligini test edilip Ana sayfadaki Povered By yazinisi test etmek istiyorum
+
+//        Ama driver hala Iframe'in icinde Iframe'in disina cikmak icin ; driver.switchTo().defaultContent/parentFrame
 
         driver.switchTo().defaultContent();
         String footerText = driver.findElement(By.xpath("(//footer[@class='blog-footer'][1])//p")).getText();
