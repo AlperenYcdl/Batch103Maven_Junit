@@ -7,6 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TestBase {
     // TestBase i abstract yapmamizin sebebi bu sinifin objesini olusturmak istemiyorum
@@ -20,7 +22,7 @@ public class TestBase {
 
     //2- setUp
     @Before
-    public void setup(){
+    public void setup() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -30,9 +32,7 @@ public class TestBase {
     }
 
     @After
-    public void tearDown(){
-        driver.quit();
-    }
+    public void tearDown() { driver.quit(); }
 
     //       MULTIPLE WINDOW
 //      1 parametre alir : gecis yapmak istedigim sayfanin title
@@ -52,5 +52,23 @@ public class TestBase {
         driver.switchTo().window(origin);
     }
 
+
+    //windowNumber sifir (0) dan basliyor
+    //indx numarasini parametre olarak alir
+    //ve o indexli pencere gecis yapar
+
+    public static void switchToWindow(int windowNumber) {
+        List<String> list = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(list.get(windowNumber));
+    }
+
+    /*  HARD WAIT @param : second */
+    public static void waitFor(int second) {
+        try {
+            Thread.sleep(second * 1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
 }
