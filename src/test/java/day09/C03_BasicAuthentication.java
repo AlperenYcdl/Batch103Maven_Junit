@@ -15,8 +15,10 @@ public class C03_BasicAuthentication extends TestBase {
 //        Username    : admin
 //        password    : admin
 //        Basarili sekilde sayfaya girin ve ‘Congratulations!’ yasizini doğrulayın
+
 //        AUTHENTICATION URL IMIZ: https://admin:admin@the-internet.herokuapp.com/basic_auth
-//                                 https://the-internet.herokuapp.com/basic_auth
+//        Normalde sayfa :          https://the-internet.herokuapp.com/basic_auth
+
         driver.get("https://admin:admin@the-internet.herokuapp.com/basic_auth");
         waitFor(3);
         String actualText = driver.findElement(By.xpath("//p")).getText();
