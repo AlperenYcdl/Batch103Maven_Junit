@@ -20,6 +20,7 @@ public class C04_FileDownloadTest extends TestBase {
 
 //        Dosyanın başarıyla indirilip indirilmediğini test edelim
         String filePath = System.getProperty("user.home") + "/Downloads/b10 all test cases, code.docx";
+        //implicityWay gibi methodlar burada kullanilamaz cunku burasi browser ile alakali degil.
 
 //        String filePath = "/Users/techproed/Downloads/b10 all test cases, code.docx";
         boolean indirildimi = Files.exists(Paths.get(filePath));
