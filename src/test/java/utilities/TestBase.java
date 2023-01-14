@@ -1,5 +1,6 @@
 package utilities;
 
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
@@ -147,6 +148,7 @@ public abstract class TestBase {
         return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
+    //COK KULLANILMAZ
     public static void clickWithTimeOut(WebElement element, int timeout) {
         for (int i = 0; i < timeout; i++) {
             try {
@@ -158,7 +160,7 @@ public abstract class TestBase {
         }
     }
 
-    //    This can be used when a new page opens
+    //    This can be used when a new page opens. Yeni sagfaya gecislerde kullanilabilir
     public static void waitForPageToLoad(long timeout) {
         ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver driver) {
