@@ -55,6 +55,7 @@ public class C01_ExtentReports2 extends TestBase {
 
     @AfterClass
     public static void extentReportTearDown() {
+
         extentReports.flush(); // bu olmadan calismaz
     }
 }
